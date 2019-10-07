@@ -1,0 +1,18 @@
+{
+  "parser": "babel-eslint",
+  //Use rules from airbnb-base
+  "extends": ["airbnb-base"],
+  //Custom rules
+  "rules": {
+    "space-infix-ops": 0,
+    "no-unused-vars": 1,
+    "prefer-const": 1, //Warning instead error for using let isntead const
+    "quotes": [2, "double", "avoid-escape"], // strings
+    "no-plusplus": 0, //disables errror on using ++
+    "indent": [2, "tab"],
+    "no-tabs": 0, //disables error for identiation
+    "no-console": 0, //disables error for unexpected console.log
+    "spaced-comment": 0, //disables needed spacing in comments,
+    "import/extensions": ["error", "always", { "ignorePackages": true }] //  Forces the use of extensions for all import statements except package imports
+  }
+}
