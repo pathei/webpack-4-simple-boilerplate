@@ -21,7 +21,7 @@ module.exports = {
 	},
 	/* Defines entry point for dev and output path for build */
 	entry: {
-		main: "./src/app/app.js",
+		main: "./src/app.js",
 	},
 	output: {
 		/* Path for e.g. image assets in build/dist */
@@ -64,7 +64,20 @@ module.exports = {
 					{
 						loader: "file-loader",
 						options: {
-							name: "[path][name].[ext]",
+							name: "./assets/fonts/[name].[ext]",
+						},
+					},
+				],
+			},
+			{
+				test: /\.(png|jpe?g|gif)$/i,
+				use: [
+					{
+						loader: "url-loader",
+						options: {
+							outputPath: "assets/images",
+							/* If bigger fallback to file-loader */
+							limit: 8192,
 						},
 					},
 				],
@@ -94,11 +107,13 @@ module.exports = {
 			paths: glob.sync(path.join(__dirname, "./src/*.html")),
 		}),
 		new CleanWebpackPlugin(),
+		/*
+		//Use late rfor statics
 		new CopyWebpackPlugin([{
-			from: "src/app/assets",
+			from: "src/assets",
 			to: "assets",
 		},
-		]),
+		]),*/
 		new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
 		new ProgressBarPlugin(),
 		/*
