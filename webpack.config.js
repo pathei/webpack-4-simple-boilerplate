@@ -113,13 +113,11 @@ module.exports = {
 			paths: glob.sync(path.join(__dirname, "./src/*.html")),
 		}),
 		new CleanWebpackPlugin(),
-		/*
-		//Use late rfor statics
 		new CopyWebpackPlugin([{
-			from: "src/assets",
-			to: "assets",
+			from: "src/assets/static",
+			to: "assets/static",
 		},
-		]),*/
+		]),
 		new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
 		new ProgressBarPlugin(),
 		/*
