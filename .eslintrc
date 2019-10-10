@@ -1,18 +1,37 @@
+/* Customized ES-Linting based on Airbnb.
+ * Change to your needs:
+ * https://eslint.org/docs/rules/
+ */
 {
   "parser": "babel-eslint",
-  //Use rules from airbnb-base
   "extends": ["airbnb-base"],
-  //Custom rules
   "rules": {
     "space-infix-ops": 0,
     "no-unused-vars": 1,
-    "prefer-const": 1, //Warning instead error for using let isntead const
-    "quotes": [2, "double", "avoid-escape"], // strings
-    "no-plusplus": 0, //disables errror on using ++
+    /* Warning on using let instead const */
+    "prefer-const": 1,
+    /* strings */
+    "quotes": [2, "double", "avoid-escape"],
+    /* allows writing ++ */
+    "no-plusplus": 0,
     "indent": [2, "tab"],
-    "no-tabs": 0, //disables error for identiation
-    "no-console": 0, //disables error for unexpected console.log
-    "spaced-comment": 0, //disables needed spacing in comments,
-    "import/extensions": ["error", "always", { "ignorePackages": true }] //  Forces the use of extensions for all import statements except package imports
-  }
+    /* disables error for identiation */
+    "no-tabs": 0,
+    /* disables error for unexpected console.log */
+    "no-console": 0,
+    /* disables the need of spacing in comments */
+    "spaced-comment": 0,
+    /* forces the use of extensions for all import statements except package imports */
+    "import/extensions": ["error", "always", { "ignorePackages": true }]
+  },
+  /* extra linting rules for HTML files*/
+  "overrides": [
+    {
+      "files": "*.html",
+      "rules": {
+        "no-unused-expressions": 0,
+        "semi": 0
+      }
+    }
+  ]
 }

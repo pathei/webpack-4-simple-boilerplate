@@ -54,7 +54,9 @@ module.exports = {
 					{
 						loader: "html-loader",
 						/* true to minimize HTML */
-						options: { minimize: false },
+						options: {
+							minimize: false,
+						},
 					},
 				],
 			},
