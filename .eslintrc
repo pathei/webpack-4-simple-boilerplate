@@ -5,6 +5,11 @@
 {
   "parser": "babel-eslint",
   "extends": ["airbnb-base"],
+  "globals": {
+    "document": true,
+    "foo": true,
+    "window": true
+  },
   "rules": {
     "space-infix-ops": 0,
     "no-unused-vars": 1,
