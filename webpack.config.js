@@ -5,12 +5,11 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const PurifyCSSPlugin = require("purifycss-webpack");
 const TerserPlugin = require("terser-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const ImageminPlugin = require("imagemin-webpack-plugin").default;
 const ProgressBarPlugin = require("progress-bar-webpack-plugin");
 const FaviconsWebpackPlugin = require("favicons-webpack-plugin");
-
 
 module.exports = {
 	/* Only outputs errors and warnings in console */
@@ -113,11 +112,14 @@ module.exports = {
 			paths: glob.sync(path.join(__dirname, "./src/*.html")),
 		}),
 		new CleanWebpackPlugin(),
-		new CopyWebpackPlugin([{
-			from: "src/assets/static",
-			to: "assets/static",
-		},
-		]),
+		new CopyPlugin({
+			patterns: [
+				{
+					from: "src/assets/static",
+					to: "assets/static",
+				},
+			],
+		}),
 		new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i }),
 		new ProgressBarPlugin(),
 		/*
